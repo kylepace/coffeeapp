@@ -12,5 +12,7 @@
 <a href="/boughtit"> Bought it </a><br/>
 <a href=""> Made it</a>
 
+<%if (!isLoggedIn) { %>
+	<a href="/auth/facebook">Log In With Facebook</a>
+<% } %>
 </body>
-
