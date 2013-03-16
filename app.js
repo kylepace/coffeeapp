@@ -5,26 +5,11 @@ var express = require('express')
 	, engine = require('ejs-locals')
 	, mongoose = require('mongoose')
     , passport = require('passport')
-    , FacebookStrategy = require('passport-facebook').Strategy
+    , config = require('./config')
+    , authConfig = require('./authConfig')
     , boughtIt = require('./model/boughtIt');
-    
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
 
-passport.deserializeUser(function(obj, done) {
-    done(null, obj);
-});
-
-passport.use(new FacebookStrategy({
-    clientID: '135163399997068',
-    clientSecret: '691056bec6b7960c7f1b8339e88cc9a4',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
-    },
-    function (accessToken, refreshToken, profile, done) {
-        done(null, profile);
-    }
-));
+authConfig.init();
 
 app.configure(function () {
     app.engine('ejs', engine);
@@ -61,7 +46,7 @@ app.get('/auth/facebook/callback',
         res.redirect('/');
     });
 
-mongoose.connect('mongodb://coffee:coffee@ds033317.mongolab.com:33317/coffeeapp');
+mongoose.connect(config.mongo.connectionString);
 
 var db = mongoose.connection;
 

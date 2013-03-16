@@ -1,21 +1,27 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({
-	username: 'string',
+	name: {
+		first: 'string',
+		last: 'string'
+	},
 	facebookId: 'string'
 });
 
 var User = mongoose.model('User', schema);
 
 module.exports = {
-	findOrCreate: function (username, facebookId, callback) {
+	findOrCreate: function (name, facebookId, callback) {
 		User.findOne({ 'facebookId': facebookId }, function (err, user) {
 			if (user === null) {
 				var newUser = new User({ 
 					facebookId: facebookId,
-					username: username
+					name: {
+						first: name.givenName,
+						last: name.familyName
+					}
 				});
-				user.save(function(err) {
+				newUser.save(function(err) {
 					callback(newUser);
 				});
 			} else {
