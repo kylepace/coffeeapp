@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<head>
-<title>Coffee App</title>
-<link rel="stylesheet" href="design.css" type="text/css" media="all">
-</head>
-
-<body>
-
-<h1>Welcome to Coffee App</h1>
-
-<a href="/boughtit"> Bought it </a><br/>
-<a href=""> Made it</a>
+<%- layout('layout') %>
 
 <%if (!isLoggedIn) { %>
 	<a href="/auth/facebook">Log In With Facebook</a>
 <% } %>
-</body>

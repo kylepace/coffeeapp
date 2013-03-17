@@ -1,18 +1,4 @@
-
-<!DOCTYPE html>
-<head>
-<title>Coffee App: Made It</title>
-<link rel="stylesheet" href="design.css" type="text/css" media="all">
-</head>
-
-<body>
-
-<h1>Welcome to Coffee App</h1>
-
-<nav>
-<a href="boughtit"> Bought it </a><br/>
-<a href="madeit"> Made it</a>
-</nav>
+<%- layout('layout') %>
 
 <div class="input-row">
 	<label for="select-beanOrigin">Bean Origin:</label>
@@ -30,17 +16,12 @@
         <option value="Nicaragua">Nicaragua</option>
     </select>
 </div>
+
 <div class="input-row">
      <label for="name">Coffee Type:</label>
     <input type="text" name="name" id="coffeeType" value="" tabindex="1" />
 </div>
 
-
 <div class="input-row">
         <input type="submit" value="Submit" />
 </div>
-
-
-
-</body>
-

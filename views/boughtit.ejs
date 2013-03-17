@@ -1,18 +1,4 @@
-
-<!DOCTYPE html>
-<head>
-<title>Coffee App: Bought It</title>
-<link rel="stylesheet" href="design.css" type="text/css" media="all">
-</head>
-
-<body>
-
-<h1>Welcome to Coffee App</h1>
-
-<nav>
-<a href="/boughtit"> Bought it </a><br/>
-<a href="madeit"> Made it</a>
-</nav>
+<%- layout('layout') %>
 
 <div class="input-row">
 	<label for="select-vendor">Vendor:</label>
@@ -27,16 +13,13 @@
     	<option value="SecondCup">Second Cup</option>
     	<option value="CoffeeCulture">Coffee Culture</option>
         <option value="TheRoastery">The Roastery</option>
-
     </select>
 </div>
 
-
 <div class="input-row">
-   <label for="name">Coffee Type:</label>
+    <label for="name">Coffee Type:</label>
     <input type="text" name="name" id="coffeeType" value="" tabindex="1" />
 </div>
-
 
 <div class="input-row">
    <label for="name">Price:</label>
@@ -66,9 +49,8 @@
         <option value="simpleSyrup">Simple Syrup</option>
         <option value="rawSugar">Raw Sugar</option>
         <option value="stevia">Stevia</option>
-
-</select>
-
+    </select>
+</div>
 
 <div class="input-row">
     <label for="select-choice">Extras:</label>
@@ -85,10 +67,3 @@
 
     </select>
 </div>
-
-</div>
-
-
-
-</body>
-

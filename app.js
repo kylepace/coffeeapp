@@ -21,21 +21,25 @@ app.configure(function () {
     app.use(express.session({ secret: 'friendo mkfriend' }));
     app.use(passport.initialize());
     app.use(passport.session());
+    app.use(function (req, res, next) {
+        res.locals.user = req.session.user;
+        console.log(req.session);
+        res.locals.isAuthenticated = req.isAuthenticated();
+        next();
+    });
     app.use(app.router);
 });
 
 app.get('/', ensureAuthenticated, function (req, res) {
-    res.render('index', { isLoggedIn: true });
+    res.render('index', { isLoggedIn: true, title: 'Home' });
 });
 
 app.get('/boughtit', function(req, res) {
-    boughtIt.create("pants", function(model) {
-        res.render('boughtit', model);
-    });
+    res.render('boughtit', { title: 'Bought It' });
 });
 
 app.get('/madeit', function(req, res) {
-    res.render('madeit');
+    res.render('madeit', { title: 'Made It' });
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) { });
@@ -61,5 +65,5 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.render('index', { isLoggedIn: false });
+    res.render('index', { isLoggedIn: false, title: 'Home' });
 }

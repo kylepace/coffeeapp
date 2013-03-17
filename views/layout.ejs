@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+	<title>Coffee App <%= title %></title>
+	<link rel="stylesheet" href="design.css" type="text/css" media="all">
+	<%- stylesheets %>
+</head>
+<body>
+	<h1>Welcome to Coffee App</h1>
+	<%if (isAuthenticated) { %>
+		<h4>Hi</h4>
+	<% } %>
+	<nav>
+		<a href="/boughtit">Bought it </a><br/>
+		<a href="/madeit"> Made it</a>
+	</nav>
+
+	<%- body %>
+	<%- scripts %>
+</body>
