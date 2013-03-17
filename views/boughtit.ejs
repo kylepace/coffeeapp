@@ -1,69 +1,75 @@
 <%- layout('layout') %>
 
-<div class="input-row">
-	<label for="select-vendor">Vendor:</label>
-	<select name="select-vendor" id="select-vendor">
-        <option value="0" selected="selected">Choose...</option>
-		<option value="Starbucks">Starbucks</option>
-		<option value="SeatlesBest">Seatles Best</option>
-		<option value="Wegmans">Wegmans</option>
-    	<option value="Tim Hortons">Tim Hortons</option>
-    	<option value="Spot">Spot</option>
-    	<option value="Dunkin Donuts">Dunkin Donuts</option>
-    	<option value="SecondCup">Second Cup</option>
-    	<option value="CoffeeCulture">Coffee Culture</option>
-        <option value="TheRoastery">The Roastery</option>
-    </select>
-</div>
+<form action="/boughtit" method="post">
+    <input type="hidden" name="_csrf" value="<%= token %>" />
+    <div class="input-row">
+        <label for="select-vendor">Vendor:</label>
+        <select name="select-vendor" id="select-vendor">
+            <option value="0" selected="selected">Choose...</option>
+            <option value="Starbucks">Starbucks</option>
+            <option value="SeatlesBest">Seatles Best</option>
+            <option value="Wegmans">Wegmans</option>
+            <option value="Tim Hortons">Tim Hortons</option>
+            <option value="Spot">Spot</option>
+            <option value="Dunkin Donuts">Dunkin Donuts</option>
+            <option value="SecondCup">Second Cup</option>
+            <option value="CoffeeCulture">Coffee Culture</option>
+            <option value="TheRoastery">The Roastery</option>
+        </select>
+    </div>
 
-<div class="input-row">
-    <label for="name">Coffee Type:</label>
-    <input type="text" name="name" id="coffeeType" value="" tabindex="1" />
-</div>
+    <div class="input-row">
+        <label for="name">Coffee Type:</label>
+        <input type="text" name="name" id="coffeeType" value="" tabindex="1" />
+    </div>
 
-<div class="input-row">
-   <label for="name">Price:</label>
-    <input type="text" name="price" id="price" value="" tabindex="2" />
-</div>
+    <div class="input-row">
+       <label for="name">Price:</label>
+        <input type="text" name="price" id="price" value="" tabindex="2" />
+    </div>
 
-<div class="input-row">
-    <label for="select-choice">Cream:</label>
-	<select name="select-cream" id="cream">
-        <option value="0" selected="selected">Choose...</option>
-		<option value="wholeMilk">Whole Milk</option>
-        <option value="onePercent">1%</option>    
-    	<option value="twoPercent">2%</option>
-		<option value="halfAndHalf">Half and Half</option>
-        <option value="skim">Skim</option>
-    </select>
-</div>
+    <div class="input-row">
+        <label for="select-choice">Cream:</label>
+        <select name="select-cream" id="cream">
+            <option value="0" selected="selected">Choose...</option>
+            <option value="wholeMilk">Whole Milk</option>
+            <option value="onePercent">1%</option>    
+            <option value="twoPercent">2%</option>
+            <option value="halfAndHalf">Half and Half</option>
+            <option value="skim">Skim</option>
+        </select>
+    </div>
 
-<div class="input-row">
-    <label for="select-choice">Sweetener:</label>
-    <select name="select-sugar" id="sweetener">
-        <option value="0" selected="selected">Choose...</option>
-		<option value="whiteSugar">White Sugar</option>
-        <option value="splenda">Splenda</option>    
-    	<option value="equal">Equal</option>
-		<option value="sweetLow">Sweet and Low</option>
-        <option value="simpleSyrup">Simple Syrup</option>
-        <option value="rawSugar">Raw Sugar</option>
-        <option value="stevia">Stevia</option>
-    </select>
-</div>
+    <div class="input-row">
+        <label for="select-choice">Sweetener:</label>
+        <select name="select-sugar" id="sweetener">
+            <option value="0" selected="selected">Choose...</option>
+            <option value="whiteSugar">White Sugar</option>
+            <option value="splenda">Splenda</option>    
+            <option value="equal">Equal</option>
+            <option value="sweetLow">Sweet and Low</option>
+            <option value="simpleSyrup">Simple Syrup</option>
+            <option value="rawSugar">Raw Sugar</option>
+            <option value="stevia">Stevia</option>
+        </select>
+    </div>
 
-<div class="input-row">
-    <label for="select-choice">Extras:</label>
-	<select name="select-extras" id="extras">
-        <option value="0" selected="selected">Choose...</option>
-		<option value="Whipped Cream">Whipped Cream</option>
-		<option value="Caramel">Caramel</option>
-		<option value="Chocolate">Chocolate</option>
-    	<option value="cinnamon">Cinnamon</option>
-    	<option value="Cocoa">Cocoa</option>
-    	<option value="Nutmeg">Nutmeg</option>
-    	<option value="Whiskey">Whiskey</option>
-    	<option value="Khalua">Khalua</option>
+    <div class="input-row">
+        <label for="select-choice">Extras:</label>
+        <select name="select-extras" id="extras">
+            <option value="0" selected="selected">Choose...</option>
+            <option value="Whipped Cream">Whipped Cream</option>
+            <option value="Caramel">Caramel</option>
+            <option value="Chocolate">Chocolate</option>
+            <option value="cinnamon">Cinnamon</option>
+            <option value="Cocoa">Cocoa</option>
+            <option value="Nutmeg">Nutmeg</option>
+            <option value="Whiskey">Whiskey</option>
+            <option value="Khalua">Khalua</option>
+        </select>
+    </div>
 
-    </select>
-</div>
+    <div class="input-row">
+        <input type="submit" value="Submit" />
+    </div>
+</form>

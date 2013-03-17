@@ -13,35 +13,47 @@ authConfig.init();
 
 app.configure(function () {
     app.engine('ejs', engine);
-	app.use('/public', express.static(__dirname + '/public'));
 	app.set('view engine', 'ejs');
     app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.session({ secret: 'friendo mkfriend' }));
+    app.use(express.csrf());
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(function (req, res, next) {
         res.locals.user = req.user;
         res.locals.isAuthenticated = req.isAuthenticated();
+        res.locals.token = req.session._csrf;
         next();
     });
     app.use(app.router);
+    app.use('/public', express.static(__dirname + '/public'));
 });
 
 app.get('/', ensureAuthenticated, function (req, res) {
     res.render('index', { title: 'Home' });
 });
 
-app.get('/boughtit', function(req, res) {
+app.get('/boughtit', function (req, res) {
     res.render('boughtit', { title: 'Bought It' });
 });
 
-app.get('/madeit', function(req, res) {
+app.post('/boughtit', function (req, res) {
+    boughtIt.create({
+        userId: req.user._id,
+        vendor: req.body['select-vendor'],
+        price: req.body.price
+    }, function () {
+        res.render('boughtit', { title: 'Bought it Saved' });
+    });
+});
+
+app.get('/madeit', function (req, res) {
     res.render('madeit', { title: 'Made It' });
 });
 
-app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) { });
+app.get('/auth/facebook', passport.authenticate('facebook'), function (req, res) { });
 
 app.get('/auth/facebook/callback', 
     passport.authenticate('facebook', { failureRedirect: '/' }),
