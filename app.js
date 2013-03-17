@@ -22,8 +22,7 @@ app.configure(function () {
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(function (req, res, next) {
-        res.locals.user = req.session.user;
-        console.log(req.session);
+        res.locals.user = req.user;
         res.locals.isAuthenticated = req.isAuthenticated();
         next();
     });
@@ -31,7 +30,7 @@ app.configure(function () {
 });
 
 app.get('/', ensureAuthenticated, function (req, res) {
-    res.render('index', { isLoggedIn: true, title: 'Home' });
+    res.render('index', { title: 'Home' });
 });
 
 app.get('/boughtit', function(req, res) {
@@ -65,5 +64,5 @@ function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.render('index', { isLoggedIn: false, title: 'Home' });
+    res.render('index', { title: 'Home' });
 }

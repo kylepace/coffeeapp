@@ -1,5 +1,5 @@
 <%- layout('layout') %>
 
-<%if (!isLoggedIn) { %>
+<%if (!isAuthenticated) { %>
 	<a href="/auth/facebook">Log In With Facebook</a>
 <% } %>

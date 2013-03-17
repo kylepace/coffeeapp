@@ -7,7 +7,7 @@
 <body>
 	<h1>Welcome to Coffee App</h1>
 	<%if (isAuthenticated) { %>
-		<h4>Hi</h4>
+		<h4>Hi <%- user.name.first %></h4>
 	<% } %>
 	<nav>
 		<a href="/boughtit">Bought it </a><br/>
